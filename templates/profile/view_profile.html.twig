@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Someone's profile
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% include 'menu.html.twig' %}
+		<div class="profile-data">
+			{% if profile_of_someone.getAvatarName()%}
+				<img src="{{ asset('images/images_for_print/' ~ profile_of_someone.getAvatarName()) }}" alt="Avatar" style="max-width: 200px; max-height: 200px;">
+			{% endif %}
+			<h4>Name:</h4>
+			{{ profile_of_someone.getFirstName()}}
+			<h4>Last name:</h4>
+			{{ profile_of_someone.getLastName()}}
+			<h4>Age:</h4>
+			{{ profile_of_someone.getAge()}}
+			<h4>Biography:</h4>
+			{{ profile_of_someone.getBiography()}}
+
+			<div class="get-image">
+				<h3>Photos</h3>
+				{% for image in profile_of_someone.getImages() %}
+					<a href="{{ path('view_image', {'id': image.getId()}) }}">
+						<img src="{{ asset('images/images_for_print/' ~ image.getImageData())}}" alt="Image" style="max-width: 150px; max-height: 150;">
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

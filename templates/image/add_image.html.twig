@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add image
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+	{% include 'menu.html.twig' %}
+		<div class="add-image">
+			{{ form_start(image_form) }}
+			{{ form_row(image_form.image) }}
+			{{ form_end(image_form) }}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile info
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% include 'menu.html.twig' %}
+		<div class="avatar">
+			{% if profile.getAvatarName()%}
+				<img src="{{ asset('images/images_for_print/' ~ profile.getAvatarName()) }}" alt="Avatar" style="max-width: 200px; max-height: 200px;">
+			{% endif %}
+			<div class="card-body">
+				<h4>Name:</h4>
+				{{ profile.getFirstName() }}
+				<h4>Last name:</h4>
+				{{ profile.getLastName() }}
+				<h4>Age:</h4>
+				{{ profile.getAge() }}
+				<h4>Biography:</h4>
+				{{ profile.getBiography() }}
+				<form action="{{ path('profile_form') }}" method="get">
+					<button type="submit" class="btn btn-dark">Edit profile</button>
+				</form>
+			</div>
+		</div>
+		<div class="get-image">
+			<h3>My images</h3>
+			{% for image in profile.getImages() %}
+				<a href="{{ path('view_image', {'id': image.getId()}) }}">
+					<img src="{{ asset('images/images_for_print/' ~ image.getImageData())}}" alt="Image" style="max-width: 150px; max-height: 150;">
+				</a>
+			{% endfor %}
+
+			<form action="{{ path('add_image') }}" method="get">
+				<button type="submit" class="btn btn-dark">Add image</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

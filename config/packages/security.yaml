@@ -1,0 +1,25 @@
+security:
+    password_hashers:
+            App\Entity\User:
+                algorithm: auto
+
+    providers:
+        entity_provider:
+            entity: 
+                class: App\Entity\User
+                property: login
+
+    firewalls:
+        main:
+            pattern: ^/
+            custom_authenticators:
+                - App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+                target: app_login
+
+    access_control:
+        - { path: ^/registration, roles: PUBLIC_ACCESS }
+        - { path: ^/confirmation/, roles: PUBLIC_ACCESS }
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: ROLE_USER }

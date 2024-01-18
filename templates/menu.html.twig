@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('list_of_profiles')}}">Profiles list</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('profile')}}">My profile</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_logout')}}">Logout user
+							{{ app.user.userIdentifier }}</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	{% else %}
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<ul class="navbar-nav">
+					<li class="navbar-nav">
+						<a class="nav-link" href="{{ path('form_registration')}}">Registration</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login')}}">Login</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	{% endif %}
+{% endblock %}

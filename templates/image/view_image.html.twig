@@ -1,0 +1,21 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}View image
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% include 'menu.html.twig' %}
+		<img src="{{ asset('images/images_for_print/' ~ image.getImageData())}}" alt="image" style="max-width: 500px; max-height: 500px;">
+		<div>
+			<form action="{{ path('remove_image', {'id': image.getId()}) }}" method="POST">
+				<button type="submit" class="btn btn-primary">Delete image</button>
+			</form>
+		</div>
+		<div>
+			<form action="{{ path('profile') }}" method="GET">
+				<button type="submit" class="btn btn-primary">Return to My page</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

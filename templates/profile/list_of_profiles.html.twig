@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of profiles
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% include 'menu.html.twig' %}
+		<h3>List of profiles</h3>
+		<div class="list-profiles">
+			{% for profile in profiles %}
+				<div>
+					{% if profile.getAvatarName()%}
+						<img src="{{ asset('images/images_for_print/' ~ profile.getAvatarName()) }}" alt="Avatar" style="max-width: 100px; max-height: 100px;">
+					{% endif %}
+				</div>
+				<a href="{{ path('profile', {'id': profile.getId()}) }}">
+					{{ profile.getFirstName() }}
+					{{ profile.getLastName() }}
+					<br>
+				</a>
+			{% endfor %}
+			{% if previous >= 0 %}
+				<a href="{{ path('list_of_profiles', {offset: previous}) }}">Previous</a>
+			{% endif %}
+			{% if next < profiles|length %}
+				<a href="{{ path('list_of_profiles', {offset: next}) }}">Next</a>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

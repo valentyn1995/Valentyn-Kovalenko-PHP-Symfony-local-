@@ -1,0 +1,19 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+form_registration:
+    path: /registration
+    controller: App\Controller\UserController::create
+email_confirmation:
+    path: /confirmation/{token}
+    controller: App\Controller\UserController::confirmEmail
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
