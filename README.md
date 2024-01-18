@@ -1,4 +1,4 @@
-# Task 11 (Setup guide)
+# Symfonygramm (Setup guide)
 
 1. Select a directory
 ```sh
@@ -6,7 +6,7 @@ cd <path directory_for_repository>
 ```
 2. Clone repo and select a branch
 ```sh
-git clone -b task_11 https://git.foxminded.ua/foxstudent105191/php_symfonygramm.git
+git clone -b main https://github.com/valentyn1995/Valentyn-Kovalenko-PHP-Symfony-local-.git
 ```
 3. Build Docker image and run Docker container
 ```sh
