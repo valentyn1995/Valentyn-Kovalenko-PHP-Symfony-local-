@@ -26,7 +26,7 @@ services:
     environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: 12345
-        POSTGRES_DB: symfony
+        POSTGRES_DB: symfonybase
     ports:
       - "5433:5432"
 
