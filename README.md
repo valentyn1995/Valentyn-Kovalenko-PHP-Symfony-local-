@@ -22,11 +22,11 @@ docker-compose exec app php bin/console doctrine:fixtures:load --env=dev --group
 ```
 6. Run messenger
 ```sh
-docker-compose exec app php bin/console messenger:consume   
+docker-compose exec app php bin/console messenger:consume async  
 ```
 7. Run mailcatcher
 ```sh
-symfony open:local:webmail
+http://localhost:1080
 ```
 8. Run application in browser
 ```sh
